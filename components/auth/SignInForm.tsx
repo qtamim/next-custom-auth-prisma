@@ -114,7 +114,7 @@ export default function SignInForm() {
           setIsPhonePending(false);
         });
     }
-  }, [otp]);
+  }, [otp, phoneInput]);
 
   const PhoneSubmit = (e?: any) => {
     e?.preventDefault();
