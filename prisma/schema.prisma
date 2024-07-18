@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 String   @id @default(cuid())
+  name               String?
+  email              String?  @unique
+  phoneNumber        String?  @unique
+  lastVerificationId String?
+  isVerfied          Boolean? @default(false)
+  // orders             Order[]
+  // sessions           Session[]
+}
+
+model VerificationToken {
+  id          String   @id @default(cuid())
+  email       String?
+  phoneNumber String?
+  token       String   @unique
+  expires     DateTime
+
+  @@unique([email, phoneNumber, token])
+}
+
+// model Order {
+//   id           Int       @id @default(autoincrement())
+//   createdAt    DateTime  @default(now())
+//   updatedAt    DateTime  @updatedAt                    
+//   isPaid       Boolean
+//   order_status String
+//   address      String
+//   orderItems   Product[]
+//   userId       String
+//   user         User      @relation(fields: [userId], references: [id])
+// }
+
+// model Product {
+//   id        Int    @id @default(autoincrement())
+//   productId String
+//   title     String
+//   price     String
+//   Order     Order? @relation(fields: [orderId], references: [id])
+//   orderId   Int?
+// }
+
+// model Session {
+//   id        String   @id @default(cuid())
+//   userId    String
+//   user      User     @relation(fields: [userId], references: [id])
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+
+//   @@index([userId])
+// }
