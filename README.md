@@ -20,22 +20,6 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Todo List
-
-[x] - create routes api
-[x] - link api with prisma database
-[x] - make verification for magic link with database
-[x] - complete session task with resend to send emails
-
-[] - rate limit in emails
-[] - rate limit in sms
-
-[x] - make user hooks to know status and it's data
-[x] - finish magic link
-
-[x] - finish phone link
-
-
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
